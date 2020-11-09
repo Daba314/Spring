@@ -11,16 +11,15 @@ import lombok.ToString;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "orders", schema = "public", catalog = "OnlineShop")
+@Table(name = "orders", schema = "public", catalog = "Shop")
 @ToString
 @Getter @Setter @NoArgsConstructor
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class OrderEntity {
-    private static final long serialVersionUID = 1L;
     @Id
     @Column(name = "orderid")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int orderid;
+    private Long orderid;
     @Basic
     @Column(name = "status")
     private String status;

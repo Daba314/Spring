@@ -11,16 +11,15 @@ import java.io.Serializable;
 import java.util.Set;
 
 @Entity
-@Table(name = "customers", schema = "public", catalog = "OnlineShop")
+@Table(name = "customers", schema = "public", catalog = "Shop")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @ToString
 @Getter @Setter @NoArgsConstructor
-public class CustomerEntity implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class CustomerEntity  {
     @Id
     @Column(name = "customerid")
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private int customerid;
+    private Long customerid;
 
     @Basic
     @Column(name = "firstname")

@@ -21,7 +21,7 @@ public class CustomerController {
         return  customerRepos.findAll();
     }
     @GetMapping("/customers/{id}")
-    public CustomerEntity getCustomertByID(@PathVariable Integer id) {
+    public CustomerEntity getCustomertByID(@PathVariable Long id) {
         Optional<CustomerEntity> optCust = customerRepos.findById(id);
         if(optCust.isPresent()) {
             return optCust.get();
@@ -36,7 +36,7 @@ public class CustomerController {
     }
 
     @PutMapping("/customers/{id}")
-    public CustomerEntity updateStudent(@PathVariable Integer id,
+    public CustomerEntity updateStudent(@PathVariable Long id,
                                  @Validated @RequestBody CustomerEntity customerUpdated) {
         return customerRepos.findById(id)
                 .map(customerEntity -> {
@@ -49,7 +49,7 @@ public class CustomerController {
     }
 
     @DeleteMapping("/customers/{id}")
-    public String deleteCustomer(@PathVariable Integer id) {
+    public String deleteCustomer(@PathVariable Long id) {
         return customerRepos.findById(id)
                 .map(customerEntity -> {
                     customerRepos.delete(customerEntity);
