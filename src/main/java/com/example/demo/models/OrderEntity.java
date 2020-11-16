@@ -1,6 +1,8 @@
+/***
+ * @author Daba Dashiev
+ * This class represent order, its variables with getters,setters, cinstructors which are embodied in annotations
+ */
 package com.example.demo.models;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;

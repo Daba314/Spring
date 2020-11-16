@@ -1,8 +1,12 @@
+/***
+ * @author Daba Dashiev
+ * This class represent Spring REST for order
+ */
 package com.example.demo.rest;
 
 import com.example.demo.exception.NotFoundException;
 import com.example.demo.jpa.CustomerRepos;
-import com.example.demo.jpa.OrderRep;
+import com.example.demo.jpa.OrderRepos;
 import com.example.demo.models.OrderEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -13,11 +17,16 @@ import java.util.List;
 @RequestMapping("/api")
 public class OrderController {
     @Autowired
-    private OrderRep orderRep;
+    private OrderRepos orderRep;
 
     @Autowired
     private CustomerRepos customerRepos;
 
+    /***
+     * Get list of orders by selected customer id
+     * @param customerId customer id
+     * @return list of orders by selected customer id
+     */
     @GetMapping("/customers/{customerId}/orders")
     public List<OrderEntity> getContactByCustomerId(@PathVariable Long customerId) {
 
@@ -27,6 +36,13 @@ public class OrderController {
 
         return orderRep.findOrderEntityByCustomer_Customerid(customerId);
     }
+
+    /***
+     * Create new order for selected customer
+     * @param customerId customer id
+     * @param orderEntity object of OrderEntity
+     * @return new order
+     */
     @PostMapping("/customers/{customerId}/orders")
     public OrderEntity addOrder(@PathVariable Long customerId,
                                     @Validated @RequestBody OrderEntity orderEntity) {
@@ -37,6 +53,13 @@ public class OrderController {
                 }).orElseThrow(() -> new NotFoundException("Customer not found!"));
     }
 
+    /***
+     * Update order parameters by selected customer id
+     * @param customerId customer id
+     * @param orderId order id
+     * @param orderUpdated object of OrderEntity
+     * @return saved order changes
+     */
     @PutMapping("/customers/{customerId}/orders/{orderId}")
     public OrderEntity updateOrder(@PathVariable Long customerId,
                                        @PathVariable Long orderId,
@@ -56,6 +79,12 @@ public class OrderController {
                 }).orElseThrow(() -> new NotFoundException("Order not found!"));
     }
 
+    /***
+     * Delete order by its id and customer id
+     * @param customerId customer id
+     * @param orderId order id
+     * @return message about successful deletion
+     */
     @DeleteMapping("/customers/{customerId}/orders/{orderId}")
     public String deleteOrder(@PathVariable Long customerId,
                                    @PathVariable Long orderId) {

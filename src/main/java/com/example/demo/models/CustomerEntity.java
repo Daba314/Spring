@@ -1,3 +1,7 @@
+/***
+ * @author Daba Dashiev
+ * This class represent customer, its variables with getters,setters, cinstructors which are embodied in annotations
+ */
 package com.example.demo.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -7,7 +11,6 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Set;
 
 @Entity
