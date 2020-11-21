@@ -9,6 +9,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 
 public interface CustomerRepos extends JpaRepository<CustomerEntity,Long> {
-    CustomerEntity findCustomerEntityByFirstnameAndLastname(String firstname ,String lastname);
-    boolean existsByFirstnameAndLastname(String firstname ,String lastname);
+    CustomerEntity findByFirstnameAndLastname(String firstname, String lastName);
+    boolean existsByFirstnameAndLastname(String firstname,String lastName);
 }
